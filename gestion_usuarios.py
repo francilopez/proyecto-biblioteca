@@ -32,3 +32,35 @@ def eliminar_usuario(matriz_usuarios, user_id):
             return
     print(f"Usuario con ID: {user_id} no encontrado.")
 
+def cambiar_datos(matriz_usuarios):
+    id_usuario = int(input("Ingrese el ID del usuario que desea cambiar los datos: "))
+
+    usuario_encontrado = None
+    for usuario in matriz_usuarios:
+        if usuario[0] == id_usuario :
+            usuario_encontrado = id_usuario
+        break
+
+
+    if usuario_encontrado is None:
+        print ("")
+
+def editar_usuario(matriz_usuarios):
+    try:
+        id_usuario = int(input("ingrese el ID del usuario: "))
+        for usuario in matriz_usuarios:
+            if usuario[0] == id_usuario:
+                nuevo_nombre = input(f"Ingrese el nuevo nombre para el usuario (actual: {usuario[1]}): ")
+                nuevo_email = input(f"Ingrese el nuevo email para el usuario (actual: {usuario[2]}): ")
+                nueva_fecha_nacimiento = input(f"Ingrese la nueva fecha de nacimiento para el usuario (actual: {usuario[3]}): ")
+
+                usuario[1] = nuevo_nombre
+                usuario[2] = nuevo_email
+                usuario[3] = nueva_fecha_nacimiento
+
+                print("Datos del usuario actualizados exitosamente.")
+                return
+        print(f"Usuario con ID: {id_usuario} no encontrado.")
+    except ValueError:
+        print("ID inválido. Debe ser un número entero.")
+        
