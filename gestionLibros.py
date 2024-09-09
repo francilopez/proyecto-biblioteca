@@ -40,6 +40,10 @@ def eliminar_libro(biblioteca, id_libro):
             return
     print(f"No se encontró un libro con ID {id_libro}.")
 
+def ordenar_biblioteca(biblioteca):
+    """Ordena la biblioteca por nombre del libro utilizando una función lambda."""
+    return sorted(biblioteca, key=lambda libro: libro[1])
+
 
 # Ejemplo de uso
 agregar_libro(biblioteca, 1, 'Sherlock Holmes', 'ABC')
