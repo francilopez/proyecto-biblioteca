@@ -17,7 +17,14 @@ def menu():
         print("2. Agregar usuarios a la matriz.")
         print("3. Eliminar usuarios de la matriz.")
         print("4. Editar datos de un usuario.")
-        print("5. Salir.")
+        print("5. Mostrar biblioteca.")
+        print("6. Agregar libro a la biblioteca.")
+        print("7. Eliminar libro de la biblioteca.")
+        print("8. Actualizar la biblioteca.")
+        print("9. Lista de prestamos de la biblioteca.")
+        print("10. Pedir un prestamo a la biblioteca.")
+        print("11. Registrar la devolución de un libro.")
+        print("12. Salir.")
 
         opcion = input("Opción: ")
         
@@ -33,8 +40,18 @@ def menu():
                 print("ID inválido. Debe ser un número entero.")
         elif opcion == '4':
             editar_usuario(matriz_usuarios)
-        elif opcion == '5':
+        elif option == '5':
+            mostrar_biblioteca(biblioteca)
+        elif option == '6':
+            agregar_libro(biblioteca)
+        elif option == '7':
+             try:
+                id_libro = int(input("Ingrese el ID del libro a eliminar: "))
+                eliminar_libro(biblioteca, id_libro)
+            except ValueError:
+                print("ID inválido. Debe ser un número entero.")
+        elif opcion == '12':
             print("Saliendo del programa.")
             break
         else:
-            print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
+            print("Opción no válida. Por favor, seleccione una opción del 1 al 12.")
