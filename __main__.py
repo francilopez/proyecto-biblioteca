@@ -32,6 +32,10 @@ prestamos = [
 ]
 
 def menu_usuarios():
+    """
+Pre: matriz_usuarios debe estar definida y ser accesible. Las funciones imprimir_matriz_usuarios, agregar_usuario, eliminar_usuario, editar_usuario, y menu deben estar definidas. El valor ingresado para opcion debe ser un número entero.
+Pos: Dependiendo de la opción seleccionada, la función ejecuta una acción correspondiente (mostrar, agregar, eliminar, editar usuarios, o regresar al menú principal). Si se ingresa una opción no válida, se mostrará un mensaje de error. El menú continuará mostrándose en un bucle hasta que se seleccione la opción para regresar al menú principal o el programa se detenga.
+    """
     while True:
         print("Gestion de usuarios: Seleccione la opcion que desea ejecutar. ")
         print("1. Mostrar matriz de usuarios.")
@@ -60,6 +64,10 @@ def menu_usuarios():
             print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
 
 def menu_libros():
+    """
+Pre: libros debe estar definida y ser accesible. Las funciones mostrar_libros, agregar_libro, actualizar_libro, eliminar_libro, ordenar_libros, y menu deben estar definidas. El valor ingresado para opcion debe ser un número entero.
+Pos: Dependiendo de la opción seleccionada, la función ejecuta la acción correspondiente (mostrar, agregar, actualizar, eliminar libros, ordenar la lista, o regresar al menú principal). Si se ingresa una opción no válida, se mostrará un mensaje de error. El menú continuará mostrándose en un bucle hasta que se seleccione la opción para regresar al menú principal o el programa se detenga.
+    """
     while True:
         print("\nGestion de libros: Seleccione la opcion que desea ejecutar. ")
         print("1. Mostrar matriz de libros.")
@@ -104,6 +112,10 @@ def menu_libros():
 
 
 def menu_prestamos():
+    """
+Pre: prestamos debe estar definido y ser accesible. Las funciones listar_prestamos, agregar_prestamo, registrar_devolucion, y menu deben estar definidas. El valor ingresado para opcion debe ser un número entero.
+Pos: Dependiendo de la opción seleccionada, la función ejecutará la acción correspondiente (listar, agregar, registrar devolución de préstamos, o regresar al menú principal). Si se ingresa una opción no válida, se mostrará un mensaje de error. El menú continuará mostrándose en un bucle hasta que se seleccione la opción para regresar al menú principal o el programa se detenga.
+    """
     while True:
         print("\nGestion de prestamos: Seleccione la opcion que desea ejecutar. ")
         print("1. Listar prestamos.")
@@ -141,6 +153,10 @@ def menu_prestamos():
 #BUSQUEDA DE LIBRO buscar_libros_interactivo(biblioteca) # Esto va en el main
 
 def menu():
+    """
+Pre: Las funciones menu_usuarios(), menu_libros(), menu_prestamos(), y busquedaLibros(libros) estan definidas y tienen que funcionar correctamente. libros debe estar definido y accesible. El módulo sys debe estar importado. El valor ingresado para opcion debe ser un número entero.
+Pos: Dependiendo de la opción seleccionada, el menú llamará a la función correspondiente para gestionar usuarios, libros, préstamos, o realizar una búsqueda. Si se selecciona la opción 5, el programa se terminará. Si se ingresa una opción no válida, se mostrará un mensaje de error y el menú continuará mostrando las opciones hasta que el programa se detenga o se seleccione la opción de salir.
+    """
     while True:
         print("\nIngrese el número correspondiente a la opción que desea ejecutar: ")
         print("1. Gestion de usuarios.")
