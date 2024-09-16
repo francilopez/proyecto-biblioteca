@@ -1,4 +1,4 @@
-def busquedaLibros(biblioteca):
+def busquedaLibros(libros):
     
     # solicitar al usuario
     print("Criterios de búsqueda disponibles: ")
@@ -22,7 +22,7 @@ def busquedaLibros(biblioteca):
     
     # busqueda según el criterio seleccionado
     criterio = int(criterio) - 1 
-    resultados = list(filter(lambda libro: valor.lower() in libro[criterio].lower(), biblioteca))
+    resultados = list(filter(lambda libro: valor.lower() in libro[criterio].lower(), libros))
     
     # slicing si se aclara el iímite
     if nResultados:
