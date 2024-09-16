@@ -6,10 +6,10 @@ def busquedaLibros(libros):
     print("2 - Buscar por Nombre")
     print("3 - Buscar por Editorial")
     
-    criterio = input("Seleccione el criterio de busqueda (1, 2, 3): ")
+    criterio = int(input("Seleccione el criterio de busqueda (1, 2, 3): "))
     
     # verifica que sea válido
-    if criterio not in ['1', '2', '3']:
+    if criterio not in [1, 2, 3]:
         print("Criterio no válido. Intente nuevamente.")
         return
     
@@ -21,8 +21,13 @@ def busquedaLibros(libros):
     nResultados = int(nResultados) if nResultados else None
     
     # busqueda según el criterio seleccionado
-    criterio = int(criterio) - 1 
-    resultados = list(filter(lambda libro: valor.lower() in libro[criterio].lower(), libros))
+    if criterio == 1:
+        # Buscar por ID (convertir el valor a entero)
+        valor = int(valor)
+        resultados = [libro for libro in libros if libro[0] == valor]
+    else:
+        # Buscar por Nombre o Editorial (convertir a minúsculas para comparación insensible a mayúsculas/minúsculas)
+        resultados = [libro for libro in libros if valor.lower() in libro[criterio - 1].lower()]
     
     # slicing si se aclara el iímite
     if nResultados:
@@ -34,5 +39,3 @@ def busquedaLibros(libros):
             print(f"ID: {libro[0]}, Nombre: {libro[1]}, Editorial: {libro[2]}")
     else:
         print(f"No se encontraron libros que coincidan con '{valor}'.")
-
-print("¡Bienvenido a la biblioteca!\n")
