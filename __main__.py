@@ -106,5 +106,7 @@ def menu():
             break
         else:
             print("Opción no válida. Por favor, seleccione una opción del 1 al 12.")
+
+        buscar_libros_interactivo(libros) # Esto va en el main
             
             
