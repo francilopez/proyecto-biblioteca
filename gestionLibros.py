@@ -1,27 +1,25 @@
-# Definimos la biblioteca como una lista vacía
-biblioteca = []
+def mostrar_libros(libros):
+    """Muestra todos los libros en la lista."""
+    if not libros:
+        print("La lista de libros está vacía.")
+    else:
+        for libro in libros:
+            print(f"ID: {libro[0]}, Nombre: {libro[1]}, Editorial: {libro[2]}")
 
-def agregar_libro(biblioteca, id_libro, nombre, editorial):
-    """Agrega un nuevo libro a la biblioteca."""
+def agregar_libro(libros, id_libro, nombre, editorial):
+    """Agrega un nuevo libro a la lista de libros."""
     # Verifica si el libro con el mismo ID ya existe
-    for libro in biblioteca:
+    for libro in libros:
         if libro[0] == id_libro:
             print(f"El libro con ID {id_libro} ya existe.")
             return
     nuevo_libro = [id_libro, nombre, editorial]
-    biblioteca.append(nuevo_libro)
-    print(f"Libro con ID {id_libro} añadido exitosamente.")  
+    libros.append(nuevo_libro)
+    print(f"Libro con ID {id_libro} añadido exitosamente.")
 
-def mostrar_biblioteca(biblioteca):
-    """Muestra todos los libros en la biblioteca."""
-    if not biblioteca:
-        print("La biblioteca está vacía.")
-    for libro in biblioteca:
-        print(f"ID: {libro[0]}, Nombre: {libro[1]}, Editorial: {libro[2]}")
-
-def actualizar_libro(biblioteca, id_libro, nombre=None, editorial=None):
-    """Actualiza los datos de un libro existente en la biblioteca."""
-    for libro in biblioteca:
+def actualizar_libro(libros, id_libro, nombre=None, editorial=None):
+    """Actualiza los datos de un libro existente en la lista."""
+    for libro in libros:
         if libro[0] == id_libro:
             if nombre:
                 libro[1] = nombre
@@ -31,37 +29,16 @@ def actualizar_libro(biblioteca, id_libro, nombre=None, editorial=None):
             return
     print(f"No se encontró un libro con ID {id_libro}.")
 
-def eliminar_libro(biblioteca, id_libro):
-    """Elimina un libro existente en la biblioteca por su ID."""
-    for i, libro in enumerate(biblioteca):
+def eliminar_libro(libros, id_libro):
+    """Elimina un libro existente en la lista por su ID."""
+    for i, libro in enumerate(libros):
         if libro[0] == id_libro:
-            del biblioteca[i]
+            del libros[i]
             print(f"Libro con ID {id_libro} eliminado exitosamente.")
             return
     print(f"No se encontró un libro con ID {id_libro}.")
 
-def ordenar_biblioteca(biblioteca):
-    """Ordena la biblioteca por nombre del libro utilizando una función lambda."""
-    return sorted(biblioteca, key=lambda libro: libro[1])
-
-
-# Ejemplo de uso
-agregar_libro(biblioteca, 1, 'Sherlock Holmes', 'ABC')
-agregar_libro(biblioteca, 2, 'El Gran Gatsby', 'Planeta')
-agregar_libro(biblioteca, 3 , 'Harry Potter', 'Planeta')
-agregar_libro(biblioteca, 4, 'Frankenstein', 'Alfaguara')
-
-# Mostrar todos los libros en la biblioteca
-mostrar_biblioteca(biblioteca)
-
-# Actualizar un libro
-actualizar_libro(biblioteca, 1, nombre='Sherlock Holmes (Edición Especial)', editorial='Urano')
-
-# Mostrar todos los libros en la biblioteca después de la actualización
-mostrar_biblioteca(biblioteca)
-
-# Eliminar un libro
-eliminar_libro(biblioteca, 2)
-
-# Mostrar todos los libros en la biblioteca después de la eliminación
-mostrar_biblioteca(biblioteca)
+def ordenar_libros(libros):
+    """Ordena la lista de libros por nombre del libro."""
+    libros.sort(key=lambda libro: libro[1])  # Cambiado de libro.nombre a libro[1]
+    print("Libros ordenados exitosamente.")
