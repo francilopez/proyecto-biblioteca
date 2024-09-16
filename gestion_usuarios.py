@@ -18,10 +18,9 @@ def agregar_usuario(matriz_usuarios):
 
     id_usuario = int(input("Ingrese el ID del nuevo usuario: "))
 
-    for usuario in matriz_usuarios:
-        if usuario[0] == id_usuario:
-            print("Error: El ID ya está en uso. No se puede agregar el usuario.")
-            return
+    if any(usuario[0] == id_usuario for usuario in matriz_usuarios):
+        print("Error: El ID ya está en uso. No se puede agregar el usuario.")
+        return
     
     nombre = input("Ingrese el nombre del nuevo usuario: ")
     email = input("Ingrese el Email del nuevo usuario: ")
