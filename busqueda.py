@@ -1,9 +1,5 @@
 def busquedaLibros(libros):
-    """
-Pre: libros debe ser una lista de listas con tres elementos. criterio debe ser 1, 2 o 3. valor debe ser una cadena de caracteres y nResultados debe ser un número entero si se proporciona.
-Pos: La función imprime el mensaje de error si el criterio no es válido. Realiza la búsqueda basada en el criterio seleccionado y el valor dado. 
-Limita los resultados si se especifica un número máximo e imprime los resultados encontrados o un mensaje de que no se encontraron coincidencias.
-    """
+    
     # solicitar al usuario
     print("Criterios de búsqueda disponibles: ")
     print("1 - Buscar por ID")

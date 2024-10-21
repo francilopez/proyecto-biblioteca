@@ -1,17 +1,12 @@
-from gestion_usuarios import imprimir_matriz_usuarios, eliminar_usuario, agregar_usuario, editar_usuario
+from gestion_usuarios import imprimir_matriz_usuarios, eliminar_usuario, agregar_usuario, editar_usuario,leer_desde_txt, guardar_en_txt
 from gestion_libros import agregar_libro, mostrar_libros, actualizar_libro, eliminar_libro, ordenar_libros
 from gestion_prestamos import agregar_prestamo, listar_prestamos, actualizar_prestamo, registrar_devolucion
 from busqueda import busquedaLibros
-import sys
 
-matriz_usuarios = [
-    [1, "francisco", "francilopez@uade.edu.ar", "21/12/2003"],
-    [2, "valentin", "valentin@uade.edu.ar", "16/10/2003"],
-    [3, "gonzalo", "gonzalo12@gmail.com", "27/01/2002"],
-    [4, "sofia", "sofia2@gmail.com", "09/12/2010"],
-    [5, "ciro", "ciro@gmail.com", "11/01/1988"],
-    [6, "valentina", "valentina2@hotmail.com", "21/09/2000"]
-]
+archivo = 'usuarios.txt'
+
+matriz_usuarios = leer_desde_txt(archivo)
+
 
 libros = [
     [201, 'Sherlock Holmes', 'ABC'],
@@ -32,11 +27,7 @@ prestamos = [
 ]
 
 def menu_usuarios():
-    """
-Pre: matriz_usuarios debe estar definida y ser accesible. Las funciones imprimir_matriz_usuarios, agregar_usuario, eliminar_usuario, editar_usuario, y menu deben estar definidas. El valor ingresado para opcion debe ser un número entero.
-Pos: Dependiendo de la opción seleccionada, la función ejecuta una acción correspondiente (mostrar, agregar, eliminar, editar usuarios, o regresar al menú principal). Si se ingresa una opción no válida, se mostrará un mensaje de error. El menú continuará mostrándose en un bucle hasta que se seleccione la opción para regresar al menú principal o el programa se detenga.
-    """
-    while True:
+    while True:    
         print("Gestion de usuarios: Seleccione la opcion que desea ejecutar. ")
         print("1. Mostrar matriz de usuarios.")
         print("2. Agregar usuario a la matriz.")
@@ -59,16 +50,13 @@ Pos: Dependiendo de la opción seleccionada, la función ejecuta una acción cor
         elif opcion == 4:
             editar_usuario(matriz_usuarios)
         elif opcion == 5:
-            menu()
+            guardar_en_txt(matriz_usuarios, archivo)
+            return
         else:
             print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
 
 def menu_libros():
-    """
-Pre: libros debe estar definida y ser accesible. Las funciones mostrar_libros, agregar_libro, actualizar_libro, eliminar_libro, ordenar_libros, y menu deben estar definidas. El valor ingresado para opcion debe ser un número entero.
-Pos: Dependiendo de la opción seleccionada, la función ejecuta la acción correspondiente (mostrar, agregar, actualizar, eliminar libros, ordenar la lista, o regresar al menú principal). Si se ingresa una opción no válida, se mostrará un mensaje de error. El menú continuará mostrándose en un bucle hasta que se seleccione la opción para regresar al menú principal o el programa se detenga.
-    """
-    while True:
+    while True:    
         print("\nGestion de libros: Seleccione la opcion que desea ejecutar. ")
         print("1. Mostrar matriz de libros.")
         print("2. Agregar un libro a la matriz.")
@@ -106,17 +94,13 @@ Pos: Dependiendo de la opción seleccionada, la función ejecuta la acción corr
         elif opcion == 5:
                 ordenar_libros(libros)
         elif opcion == 6:
-            menu()
+            return
         else:
             print("Opción no válida. Por favor, seleccione una opción del 1 al 6.")
 
 
 def menu_prestamos():
-    """
-Pre: prestamos debe estar definido y ser accesible. Las funciones listar_prestamos, agregar_prestamo, registrar_devolucion, y menu deben estar definidas. El valor ingresado para opcion debe ser un número entero.
-Pos: Dependiendo de la opción seleccionada, la función ejecutará la acción correspondiente (listar, agregar, registrar devolución de préstamos, o regresar al menú principal). Si se ingresa una opción no válida, se mostrará un mensaje de error. El menú continuará mostrándose en un bucle hasta que se seleccione la opción para regresar al menú principal o el programa se detenga.
-    """
-    while True:
+    while True:    
         print("\nGestion de prestamos: Seleccione la opcion que desea ejecutar. ")
         print("1. Listar prestamos.")
         print("2. Agregar un prestamo.")
@@ -143,29 +127,28 @@ Pos: Dependiendo de la opción seleccionada, la función ejecutará la acción c
             except ValueError:
                 print("ID inválido. Debe ser un número entero.")
         elif opcion == 4:
-            menu()
+            return
         else:
             print("Opción no válida. Por favor, seleccione una opción del 1 al 4.")
 
 
-#menu()
-
-#BUSQUEDA DE LIBRO buscar_libros_interactivo(biblioteca) # Esto va en el main
-
 def menu():
-    """
-Pre: Las funciones menu_usuarios(), menu_libros(), menu_prestamos(), y busquedaLibros(libros) estan definidas y tienen que funcionar correctamente. libros debe estar definido y accesible. El módulo sys debe estar importado. El valor ingresado para opcion debe ser un número entero.
-Pos: Dependiendo de la opción seleccionada, el menú llamará a la función correspondiente para gestionar usuarios, libros, préstamos, o realizar una búsqueda. Si se selecciona la opción 5, el programa se terminará. Si se ingresa una opción no válida, se mostrará un mensaje de error y el menú continuará mostrando las opciones hasta que el programa se detenga o se seleccione la opción de salir.
-    """
-    while True:
+    opcion = 0
+
+    while opcion != 5:
         print("\nIngrese el número correspondiente a la opción que desea ejecutar: ")
         print("1. Gestion de usuarios.")
         print("2. Gestion de libros.")
         print("3. Gestion de prestamos.")
         print("4. Busqueda de libros.")
         print("5. Salir del programa")
+        
 
-        opcion= int(input("Opcion: "))
+        try:
+            opcion = int(input("Opcion: "))
+        except ValueError:
+            print("por favor, ingrese una opcion valida.")
+            continue   
 
         if opcion == 1:
             menu_usuarios()
@@ -177,8 +160,6 @@ Pos: Dependiendo de la opción seleccionada, el menú llamará a la función cor
             busquedaLibros(libros)
         elif opcion == 5:
             print("Saliendo del programa...")
-            sys.exit()
         else:
             print("Opcion no valida. Por favor, seleccione una opcion del 1 al 5.")
-
 menu()
