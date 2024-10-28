@@ -1,5 +1,4 @@
                            #### VALIDACION #####
-# Validación de fecha para los prestamos ACORREGIR O CAMBIAR
 import datetime
 import re
 
