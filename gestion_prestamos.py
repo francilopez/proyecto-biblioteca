@@ -1,4 +1,6 @@
 import datetime
+import re
+from validacion import validar_fecha
 
 def agregar_prestamo(prestamos, ids_prestamos, id_prestamo, id_libro, id_cliente, fecha_prestamo):
     """Agrega un nuevo préstamo a la lista de préstamos."""
