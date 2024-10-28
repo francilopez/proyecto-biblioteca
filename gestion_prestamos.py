@@ -1,13 +1,11 @@
 import datetime
 
-
-def agregar_prestamo(prestamos, id_prestamo, id_libro, id_cliente, fecha_prestamo):
+def agregar_prestamo(prestamos, ids_prestamos, id_prestamo, id_libro, id_cliente, fecha_prestamo):
     """Agrega un nuevo préstamo a la lista de préstamos."""
     # Verifica si el préstamo con el mismo ID ya existe
-    for prestamo in prestamos:
-        if prestamo['id'] == id_prestamo:
-            print(f"El préstamo con ID {id_prestamo} ya existe.")
-            return
+    if id_prestamo in ids_prestamos:
+        print(f"El préstamo con ID {id_prestamo} ya existe.")
+        return
     nuevo_prestamo = {
         'id': id_prestamo,
         'id_libro': id_libro,
@@ -16,6 +14,7 @@ def agregar_prestamo(prestamos, id_prestamo, id_libro, id_cliente, fecha_prestam
         'estado': 'prestado'  # Estado inicial del préstamo
     }
     prestamos.append(nuevo_prestamo)
+    ids_prestamos.add(id_prestamo)  # Agrega el ID al conjunto
     print(f"Préstamo agregado: ID={id_prestamo}, Libro ID={id_libro}, Cliente ID={id_cliente}, Fecha={fecha_prestamo}")
 
 def listar_prestamos(prestamos):
@@ -27,7 +26,7 @@ def listar_prestamos(prestamos):
         for prestamo in prestamos:
             print(f"ID: {prestamo['id']}, Libro ID: {prestamo['id_libro']}, Cliente ID: {prestamo['id_cliente']}, Fecha de Préstamo: {prestamo['fecha_prestamo']}, Estado: {prestamo['estado']}")
 
-def actualizar_prestamo(prestamos, id_prestamo, nueva_fecha=None, nuevo_estado=None):
+def actualizar_prestamo(prestamos, ids_prestamos, id_prestamo, nueva_fecha=None, nuevo_estado=None):
     """Actualiza la información del préstamo especificado."""
     for prestamo in prestamos:
         if prestamo['id'] == id_prestamo:
@@ -39,9 +38,11 @@ def actualizar_prestamo(prestamos, id_prestamo, nueva_fecha=None, nuevo_estado=N
             return
     print(f"No se encontró el préstamo con ID={id_prestamo}")
 
-def registrar_devolucion(prestamos, id_prestamo):
+def registrar_devolucion(prestamos, ids_prestamos, id_prestamo):
     """Registra la devolución de un libro y actualiza el estado del préstamo."""
-    actualizar_prestamo(prestamos, id_prestamo, nuevo_estado='devuelto')
+    actualizar_prestamo(prestamos, ids_prestamos, id_prestamo, nuevo_estado='devuelto')
+    #eliminar el id del conjunto
+    ids_prestamos.discard(id_prestamo)
 
 
 
