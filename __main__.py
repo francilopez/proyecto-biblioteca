@@ -1,7 +1,8 @@
 from gestion_usuarios import imprimir_matriz_usuarios, eliminar_usuario, agregar_usuario, editar_usuario,leer_desde_txt, guardar_en_txt
 from gestion_libros import agregar_libro, mostrar_libros, actualizar_libro, eliminar_libro, ordenar_libros
-from gestion_prestamos import agregar_prestamo, listar_prestamos, actualizar_prestamo, registrar_devolucion
+from gestion_prestamos import cargar_prestamos, guardar_prestamos, agregar_prestamo, listar_prestamos, actualizar_prestamo, registrar_devolucion
 from busqueda import busquedaLibros
+import json
 
 archivo = 'usuarios.txt'
 
@@ -25,6 +26,8 @@ prestamos = [
     {'id': 5, 'id_libro': 205, 'id_cliente': 5, 'fecha_prestamo': '2024-08-05', 'estado': 'devuelto'},
     {'id': 6, 'id_libro': 206, 'id_cliente': 6, 'fecha_prestamo': '2024-08-06', 'estado': 'prestado'},
 ]
+with open('prestamos.json', 'w') as file:
+    json.dump(prestamos, file, indent=4)
 
 def menu_usuarios():
     while True:    
