@@ -8,15 +8,9 @@ archivo = 'usuarios.txt'
 
 matriz_usuarios = leer_desde_txt(archivo)
 
+archivos = 'libros.txt'
 
-libros = [
-    [201, 'Sherlock Holmes', 'ABC'],
-    [202, 'El Gran Gatsby', 'Planeta'],
-    [203, 'Harry Potter', 'Planeta'],
-    [204, 'Frankenstein', 'Alfaguara'],
-    [205, 'Los Juegos del Hambre', 'Penguin Random House'],
-    [206, 'Cien Años de Soledad', 'ABC']
-]
+libros = leer_desde_txt_libros(archivos)
 
 prestamos = [
     {'id': 1, 'id_libro': 201, 'id_cliente': 1, 'fecha_prestamo': '2024-08-01', 'estado': 'prestado'},
