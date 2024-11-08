@@ -94,3 +94,20 @@ def ordenar_libros(libros):
     
     ordenar_recursivo(libros)
     print("Libros ordenados exitosamente.")
+
+### ESTA SERIA LA MEJOR OPCION DE RECURSIVIDAD
+def mostrar_libros(libros):
+    """Muestra todos los libros en la lista de forma recursiva."""
+    def mostrar_recursivamente(libros, idx=0):
+        if idx >= len(libros):  # Caso base: si el índice es mayor que el tamaño de la lista
+            return
+        libro = libros[idx]
+        print(f"{libro[0]:<5} {libro[1]:<30} {libro[2]:<20}")
+        mostrar_recursivamente(libros, idx + 1)  # Llamada recursiva para mostrar el siguiente libro
+    
+    if not libros:
+        print("La lista de libros está vacía.")
+    else:
+        print(f"{'ID':<5} {'Nombre':<30} {'Editorial':<20}")
+        print("-" * 65)
+        mostrar_recursivamente(libros)
