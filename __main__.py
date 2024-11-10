@@ -1,5 +1,5 @@
 from gestion_usuarios import imprimir_matriz_usuarios, eliminar_usuario, agregar_usuario, editar_usuario,leer_desde_txt, guardar_en_txt
-from gestion_libros import agregar_libro, mostrar_libros, actualizar_libro, eliminar_libro, ordenar_libros
+from gestion_libros import agregar_libro, mostrar_libros, actualizar_libro, eliminar_libro, ordenar_libros, leer_desde_txt_libros, guardar_en_txt_libros
 from gestion_prestamos import cargar_prestamos, guardar_prestamos, agregar_prestamo, listar_prestamos, actualizar_prestamo, registrar_devolucion
 from busqueda import busquedaLibros
 import json
