@@ -17,15 +17,21 @@ def leer_desde_txt(archivo):
     return matriz_usuarios
 
 
+
+
+
 def guardar_en_txt(matriz_usuarios, archivo):
     try:
         with open(archivo, 'w') as f:
             for usuario in matriz_usuarios:
-                linea = f"{usuario[0]}, {usuario[1]}, {usuario[2]}, {usuario[3]}\n"
+                linea = f"{usuario[0]},{usuario[1]},{usuario[2]},{usuario[3]}\n"
                 f.write(linea)
-        print(f"Matriz guardada en {archivo} exitosamente.")
     except Exception as e:
         print(f"Error al guardar en el archivo: {e}")
+
+
+
+
 
 def imprimir_matriz_usuarios(matriz):
 
@@ -39,14 +45,14 @@ def imprimir_matriz_usuarios(matriz):
         print(f"{id_usuario:<5} {nombre:<10} {correo:<25} {fecha_nac:>12}")
     print("-" * 65)
 
+
+
+
+
+
 def agregar_usuario(matriz_usuarios):
 
-    id_usuario = int(input("Ingrese el ID del nuevo usuario: "))
-
-    if any(usuario[0] == id_usuario for usuario in matriz_usuarios):
-        print("Error: El ID ya está en uso. No se puede agregar el usuario.")
-        return
-    
+    id_usuario = matriz_usuarios[-1][0] + 1 
     nombre = input("Ingrese el nombre del nuevo usuario: ")
     email = input("Ingrese el Email del nuevo usuario: ")
     
@@ -55,11 +61,13 @@ def agregar_usuario(matriz_usuarios):
         return
 
     fecha_nacimiento = input("Ingrese la fecha de nacimiento del nuevo usuario (DD/MM/AAAA): ")
-
-
     nuevo_usuario = [id_usuario, nombre, email, fecha_nacimiento]
-    
     matriz_usuarios.append(nuevo_usuario)
+
+
+
+
+
 
 def eliminar_usuario(matriz_usuarios, user_id):
     for i, usuario in enumerate(matriz_usuarios):
@@ -68,6 +76,11 @@ def eliminar_usuario(matriz_usuarios, user_id):
             print(f"Usuario con ID: {user_id} eliminado.")
             return
     print(f"Usuario con ID: {user_id} no encontrado.")
+
+
+
+
+
 
 def editar_usuario(matriz_usuarios):
     try:
@@ -83,7 +96,7 @@ def editar_usuario(matriz_usuarios):
                 usuario[3] = nueva_fecha_nacimiento
 
                 print("Datos del usuario actualizados exitosamente.")
-                return
+                return 
         print(f"Usuario con ID: {id_usuario} no encontrado.")
     except ValueError:
         print("ID inválido. Debe ser un número entero.")

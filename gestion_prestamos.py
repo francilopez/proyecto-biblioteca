@@ -8,10 +8,22 @@ def cargar_prestamos(filename):
             return json.load(file)
     return []
 
+
+
+
+
+
+
 def guardar_prestamos(prestamos, filename):
     """Guarda los préstamos en un archivo JSON."""
     with open(filename, 'w') as file:
         json.dump(prestamos, file, indent=4)
+
+
+
+
+
+
 
 def agregar_prestamo(prestamos, filename, id_prestamo, id_libro, id_cliente, fecha_prestamo):
     """Agrega un nuevo préstamo a la lista de préstamos."""
@@ -28,17 +40,40 @@ def agregar_prestamo(prestamos, filename, id_prestamo, id_libro, id_cliente, fec
         'estado': 'prestado'
     }
     prestamos.append(nuevo_prestamo)
-    guardar_prestamos(prestamos, filename)  # Guardar cambios
+    guardar_prestamos(prestamos, filename)  
     print(f"Préstamo agregado: ID={id_prestamo}, Libro ID={id_libro}, Cliente ID={id_cliente}, Fecha={fecha_prestamo}")
 
+
+
+
+
+
+# def listar_prestamos(prestamos):
+#     """Lista todos los préstamos actuales."""
+#     if not prestamos:
+#         print("No hay préstamos actuales.")
+#     else:
+#         print("Historial de Préstamos:")
+#         for prestamo in prestamos:
+#             print(f"ID: {prestamo['id']}, Libro ID: {prestamo['id_libro']}, Cliente ID: {prestamo['id_cliente']}, Fecha de Préstamo: {prestamo['fecha_prestamo']}, Estado: {prestamo['estado']}")
+
+
+
+
+
 def listar_prestamos(prestamos):
-    """Lista todos los préstamos actuales."""
-    if not prestamos:
-        print("No hay préstamos actuales.")
-    else:
-        print("Historial de Préstamos:")
-        for prestamo in prestamos:
-            print(f"ID: {prestamo['id']}, Libro ID: {prestamo['id_libro']}, Cliente ID: {prestamo['id_cliente']}, Fecha de Préstamo: {prestamo['fecha_prestamo']}, Estado: {prestamo['estado']}")
+    print(f"{'ID':<5} {'ID Libro':<10} {'ID Cliente':<12} {'Fecha de Préstamo':<20} {'Estado':<10}")
+    print("-" * 60)
+
+    for prestamo in prestamos:
+     print(f"{prestamo['id']:<5} {prestamo['id_libro']:<10} {prestamo['id_cliente']:<12} {prestamo['fecha_prestamo']:<20} {prestamo['estado']:<10}")
+    print("-" * 60)
+
+
+
+
+
+
 
 def actualizar_prestamo(prestamos, filename, id_prestamo, nueva_fecha=None, nuevo_estado=None):
     """Actualiza la información del préstamo especificado."""
@@ -53,6 +88,14 @@ def actualizar_prestamo(prestamos, filename, id_prestamo, nueva_fecha=None, nuev
             return
     print(f"No se encontró el préstamo con ID={id_prestamo}")
 
+
+
+
+
+
+
 def registrar_devolucion(prestamos, filename, id_prestamo):
     """Registra la devolución de un libro y actualiza el estado del préstamo."""
     actualizar_prestamo(prestamos, filename, id_prestamo, nuevo_estado='devuelto')
+
+
