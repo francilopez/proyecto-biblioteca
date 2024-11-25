@@ -1,5 +1,6 @@
 def busquedaLibros(libros):
-    
+    # pre: que el parámetro libros sea una lista de tuplas, donde cada elemento tenga al menos tres elementos: un ID, un nombre y una editorial.
+    # pos: imprime los resultados de búsqueda de libros que coinciden con el criterio y valor introducidos por el usuario
     # solicitar al usuario
     print("Criterios de búsqueda disponibles: ")
     print("1 - Buscar por ID")
